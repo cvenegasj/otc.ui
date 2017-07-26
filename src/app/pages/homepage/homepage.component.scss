@@ -1,0 +1,91 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+md-sidenav-container {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#leftSidenav {
+  width: 220px;
+}
+
+#rightSidenav {
+  width: 230px;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+agm-map {
+  height: 100%;
+}
+
+app-project-detail {
+  height: 100%;
+}
+
+#leftSidenav #mapsSearch {
+  font-size: 13px;
+}
+
+#leftSidenav md-nav-list a {
+  font-size: 11px;
+}
+
+#leftSidenav md-nav-list a .bullet-category {
+  width: 15px;
+  margin-right: 10px;
+}
+
+#rightSidenav md-nav-list md-list-item {
+
+  color: #757575;
+
+  h3 {
+    font-size: 12px;
+    line-height: 15px;
+    white-space: pre-line;
+    //text-overflow: ellipsis;
+    //overflow: hidden;
+    max-height: 30px;
+  }
+
+  p {
+    font-size: 10px;
+    line-height: 15px;
+  }
+}
+
+.card-general-info-window {
+  width: 360px;
+  height: 125px;
+  padding: 0;
+  box-shadow: none !important;
+
+  md-card-title {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  md-card-subtitle {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 400;
+  }
+
+  md-card-content {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+
+@mixin homepage-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .text-style-1 {
+    color: mat-color($accent);
+    font-weight: 500;
+  }
+
+  #leftSidenav {
+    // background-color: mat-color($accent, lighter);
+  }
+
+  #rightSidenav md-nav-list md-list-item:hover,
+  #rightSidenav md-nav-list md-list-item:active,
+  #rightSidenav md-nav-list md-list-item:focus {
+
+    background-color: mat-color($accent);
+
+    * {
+      color: mat-color($accent, default-contrast);
+    }
+  }
+}

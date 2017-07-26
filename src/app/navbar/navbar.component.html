@@ -1,0 +1,20 @@
+<!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
+<nav class="otc-navbar">
+  <button md-icon-button (click)="toggleSidenav();">
+    <i class="material-icons">menu</i>
+  </button>
+  <a md-button class="otc-button" routerLink="/" aria-label="Ocupa tu calle">
+    <!--<i class="material-icons">location_city</i>
+    Ocupa tu calle -->
+    <img src="../../assets/img/logo_otc2.png" width="155" />
+  </a>
+  <a md-button class="otc-button" routerLink="/home/nosotros">Nosotros</a>
+  <a md-button class="otc-button" routerLink="/">Participa</a>
+  <a md-button class="otc-button" routerLink="/">Proyectos</a>
+  <a md-button class="otc-button" routerLink="/">Medios</a>
+  <a md-button class="otc-button" routerLink="/">Contacto</a>
+
+  <span fxFlex></span>
+
+  <a md-button class="otc-button">Ingresar</a>
+</nav>

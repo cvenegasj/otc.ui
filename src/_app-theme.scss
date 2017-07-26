@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+
+// Styles for the docs app that are based on the current theme.
+@mixin app-root-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .otc-app-background {
+    background: mat-color($background, background);
+  }
+
+  .otc-primary-header {
+    background: mat-color($primary);
+
+    h1 {
+      color: mat-color($primary, default-contrast);
+    }
+  }
+
+  .otc-footer {
+    background: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+  }
+
+}

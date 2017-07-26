@@ -1,0 +1,53 @@
+<article fxFlex dense *ngIf="project">
+
+  <header>
+    {{ project.name }}
+  </header>
+
+  <div class="body-container" fxLayout="column" style="padding: 15px;">
+    <div fxFlex>
+      <img src="../../../../assets/img/manhattan-park.jpg" class="responsive-img" />
+    </div>
+    <div fxFlex class="font-14" style="margin-top: 10px;">
+      <div><span class="bold">Puntuación: </span> <span>{{ project.punctuation }} estrellas</span></div>
+      <div><span class="bold">Estado: </span> <span>{{ project.status }}</span></div>
+      <div><span class="bold">Creado por: </span> <span>{{ project.creator }}</span></div>
+    </div>
+
+    <div style="margin-top: 30px;">{{ project.description }}</div>
+
+    <div style="margin-top: 10px;">
+      <md-list dense>
+        <h3 md-subheader>Materiales necesitados</h3>
+        <md-list-item>
+          <h4 md-line>Madera</h4>
+        </md-list-item>
+        <md-list-item>
+          <h4 md-line>Cemento</h4>
+        </md-list-item>
+        <md-list-item>
+          <h4 md-line>Grava</h4>
+        </md-list-item>
+        <md-divider></md-divider>
+        <h3 md-subheader>Perfiles necesitados</h3>
+        <md-list-item>
+          <h4 md-line>Artistas gráficos</h4>
+          <p md-line class="demo-2"> Para lorem ipsum </p>
+        </md-list-item>
+        <md-list-item>
+          <h4 md-line>Artistas gráficos</h4>
+          <p md-line class="demo-2"> Para lorem ipsum </p>
+        </md-list-item>
+        <md-list-item>
+          <h4 md-line>Artistas gráficos</h4>
+          <p md-line class="demo-2"> Para lorem ipsum </p>
+        </md-list-item>
+        <md-list-item>
+          <h4 md-line>Artistas gráficos</h4>
+          <p md-line class="demo-2"> Para lorem ipsum </p>
+        </md-list-item>
+      </md-list>
+    </div>
+  </div>
+
+</article>

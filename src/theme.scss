@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+@import 'app-theme';
+@import 'app/navbar/navbar-theme';
+@import 'app/pages/homepage/homepage-theme';
+@import 'app/project/project-detail-theme';
+
+@include mat-core();
+
+$primary: mat-palette($mat-red, 500);
+$accent:  mat-palette($mat-light-blue, 600, A200, A700);
+$warn:    mat-palette($mat-red, 600);
+$background: mat-palette($mat-light-blue, 600);
+$foreground: mat-palette($mat-grey, 600, 500, 700);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+@include app-root-theme($theme);
+@include navbar-theme($theme);
+@include homepage-theme($theme);
+@include project-detail-theme($theme);

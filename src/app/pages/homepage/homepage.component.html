@@ -1,0 +1,154 @@
+<md-sidenav-container fxFlex>
+  <md-sidenav #leftSidenav id="leftSidenav" mode="side" fxLayout="column" [class.mat-elevation-z6]="true">
+    <md-input-container style="padding: 60px 10px 30px;" floatPlaceholder="always">
+      <md-placeholder>
+        Busca una dirección
+      </md-placeholder>
+      <input #mapsSearch id="mapsSearch" fxFlex mdInput type="search" [formControl]="mapsSearchControl" value="Calle Chinchón 555">
+      <!--<input #mapsSearch fxFlex mdInput type="search" [formControl]="mapsSearchControl" [mdAutocomplete]="auto" value="Calle Chinchón 555">
+      <md-autocomplete #auto="mdAutocomplete">
+        <md-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{ option }}
+        </md-option>
+      </md-autocomplete> -->
+    </md-input-container>
+
+    <md-divider></md-divider>
+
+    <md-nav-list dense class="uppercase">
+      <h3 md-subheader>Oportunidades</h3>
+      <a md-list-item href="">Convocatoria de voluntarios</a>
+      <a md-list-item href="">Donación de materiales</a>
+
+      <md-divider></md-divider>
+
+      <h3 md-subheader>Vista de proyectos</h3>
+      <md-list-item>
+        <a md-line href="..."><img src="../../../../assets/img/punto-verde.png" class="bullet-category" /> Ocupados</a>
+        <button md-icon-button (click)="showInfo(link)">
+          <md-icon class="material-icons">remove_red_eye</md-icon>
+        </button>
+      </md-list-item>
+      <md-list-item>
+        <a md-line href="..."><img src="../../../../assets/img/punto-naranja.png" class="bullet-category" /> Por ocupar</a>
+        <button md-icon-button (click)="showInfo(link)">
+          <md-icon class="material-icons">remove_red_eye</md-icon>
+        </button>
+      </md-list-item>
+      <md-list-item>
+        <a md-line href="..."><img src="../../../../assets/img/punto-morado.png" class="bullet-category" /> En conflicto</a>
+        <button md-icon-button (click)="showInfo(link)">
+          <md-icon class="material-icons">remove_red_eye</md-icon>
+        </button>
+      </md-list-item>
+
+    </md-nav-list>
+  </md-sidenav>
+
+  <div class="content" fxLayout='row' fxLayout.lt-sm="column">
+    <agm-map fxFlex fxFlex.lt-sm="100" [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapReady)="loadMapAPIs($event)">
+
+      <agm-marker  *ngFor="let m of markers; let i = index"
+                   (markerClick)="clickedMarker(m)"
+                   [latitude]="m.lat"
+                   [longitude]="m.lng"
+                   iconUrl="{{ '../../../../assets/img/' + m.iconUrl }}">
+        <!--<agm-info-window>
+          <md-card dense fxFlex class="card-general-info-window" style="height: 340px !important;">
+            <md-card-title>
+              Parque Manhattan
+            </md-card-title>
+            <md-card-subtitle>
+              Estrategia promovida por el observatorio ciudadano Lima Cómo Vamos
+            </md-card-subtitle>
+            <img md-card-image src="../../../../assets/img/manhattan-park.jpg" />
+            <md-card-content>
+              <div><span class="bold">Puntuación: </span>
+                <span>
+                  <i class="material-icons icon-12">star_rate</i>
+                  <i class="material-icons icon-12">star_rate</i>
+                  <i class="material-icons icon-12">star_rate</i>
+                  <i class="material-icons icon-12">star_rate</i>
+                  <i class="material-icons icon-12">star_rate</i></span></div>
+              <div><span class="bold">Estado: </span><span>En proceso - faltan 5 días</span></div>
+              <div><span class="bold">Creado por: </span><span>Colectivo Perú</span></div>
+              <div><span class="bold">Duración del proyecto: </span><span>2 meses aprox.</span></div>
+            </md-card-content>
+            <md-card-actions align="center">
+              <button md-button (click)="openProjectDetailDialog(21)">VER MÁS</button>
+            </md-card-actions>
+          </md-card>
+        </agm-info-window> -->
+      </agm-marker>
+
+      <agm-marker *ngIf="markerDatea" [latitude]="markerDatea.lat" [longitude]="markerDatea.lng" [markerDraggable]="true" iconUrl="../../../../assets/img/user-position-marker.svg">
+        <agm-info-window>
+          <md-card dense fxFlex class="card-general-info-window">
+            <md-card-title>
+              Parque Manhattan
+            </md-card-title>
+            <md-card-content fxLayout="row">
+              <div fxFlex fxLayout="column" fxLayoutAlign="center center" style="padding: 5px;">
+                <p class="centered">Si quieres pasar la voz de algún lugar que se podría intervenir</p>
+                <button md-button md-raised-button color="primary" class="mat-elevation-z1">Datea</button>
+              </div>
+              <div fxFlex fxLayout="column" fxLayoutAlign="center center" style="padding: 5px;">
+                <p class="centered">Si quieres empezar un proyecto aquí</p>
+                <button md-button md-raised-button color="primary" class="mat-elevation-z9">Crea un proyecto</button>
+              </div>
+            </md-card-content>
+          </md-card>
+        </agm-info-window>
+      </agm-marker>
+
+      <!-- Displays the user current position -->
+      <!-- <agm-marker *ngIf="markerCurrentPosition" [latitude]="markerCurrentPosition.lat" [longitude]="markerCurrentPosition.lng" iconUrl="../../../../assets/img/user-position-marker.svg"></agm-marker> -->
+    </agm-map>
+
+    <div fxFlex="35" fxFlex.lt-sm="100" *ngIf="selectedProject" class="mat-elevation-z5" style="z-index: 999; overflow-y: auto; max-height: 100%;">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+
+  <md-sidenav #rightSidenav id="rightSidenav" align="end" mode="side" opened fxHide.lt-md="true">
+    <md-nav-list dense>
+      <md-list-item [disableRipple]="true">
+        <img md-list-avatar src="https://scontent.flim2-1.fna.fbcdn.net/v/t1.0-9/18739823_10154332820397820_1443666394431212880_n.jpg?oh=569c42161eeea5493f3c62ed8d80abfc&oe=59D6E032" alt="...">
+        <h3 md-line>A <strong>Michael</strong> le gustó <span class="text-style-1">Parques musicales</span></h3>
+        <p md-line>
+          <span>una idea de </span>
+          <span>Miniparques</span>
+        </p>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item [disableRipple]="true">
+        <img md-list-avatar src="https://www.bellazon.com/main/uploads/monthly_2016_10/Grimes-3.jpgi.jpg.936d0553cb6fbe365bb31b5b32193d11.jpg" alt="...">
+        <h3 md-line>A <strong>Claire Boucher</strong> le gustó <span class="text-style-1">Parques musicales</span></h3>
+        <p md-line>
+          <span>una idea de </span>
+          <span>Miniparques</span>
+        </p>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item [disableRipple]="true">
+        <img md-list-avatar src="https://yt3.ggpht.com/-V92UP8yaNyQ/AAAAAAAAAAI/AAAAAAAAAAA/zOYDMx8Qk3c/s900-c-k-no-mo-rj-c0xffffff/photo.jpg" alt="...">
+        <h3 md-line>A <strong>Grumpy C.</strong> le gustó <span class="text-style-1">Parques musicales</span></h3>
+        <p md-line>
+          <span>una idea de </span>
+          <span>Miniparques</span>
+        </p>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item [disableRipple]="true">
+        <img md-list-avatar src="https://yt3.ggpht.com/-V92UP8yaNyQ/AAAAAAAAAAI/AAAAAAAAAAA/zOYDMx8Qk3c/s900-c-k-no-mo-rj-c0xffffff/photo.jpg" alt="...">
+        <h3 md-line>A <strong>Grumpy Cat Grumpy Grumpy</strong> le gustó <span class="text-style-1">Parques musicales</span></h3>
+        <p md-line>
+          <span>una idea de </span>
+          <span>Peatonalización temporal</span>
+        </p>
+      </md-list-item>
+    </md-nav-list>
+  </md-sidenav>
+</md-sidenav-container>
