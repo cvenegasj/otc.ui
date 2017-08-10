@@ -1,0 +1,101 @@
+<div style="max-width: 500px; max-height: 90vh;">
+  <h1 md-dialog-title>¡Crea un proyecto aquí!</h1>
+
+  <div class="centered font-16" style="margin-bottom: 30px;">
+    Al crear un proyecto propones una solución para tu ciudad.
+  </div>
+
+  <form #form="ngForm" (ngSubmit)="dialogRef.close(form.value)" ngNativeValidate class="font-13">
+    <div fxLayout="column">
+      <md-input-container>
+        <label for="name" class="bold">Nombre de proyecto *</label>
+        <input id="name" mdInput ngModel name="name" required>
+      </md-input-container>
+
+      <md-input-container>
+        <label for="address" class="bold">Dirección del proyecto *</label>
+        <input id="address" mdInput ngModel name="address" required>
+      </md-input-container>
+
+      <md-input-container>
+        <label for="description" class="bold">Descripción *</label>
+        <textarea id="description" mdInput ngModel name="description" rows="3" cols="60" required></textarea>
+      </md-input-container>
+
+      <div>
+        <label class="bold" style="margin-right: 15px;">Estado(s) *</label>
+        <md-checkbox [(ngModel)]="isOccupied" name="isOccupied">Ocupado</md-checkbox>
+        <md-checkbox [(ngModel)]="isToBeOccupied" name="isToBeOccupied">Por ocupar</md-checkbox>
+        <md-checkbox [(ngModel)]="isInConflict" name="isInConflict">En conflicto</md-checkbox>
+      </div>
+
+      <md-input-container>
+        <label for="intervened" class="bold">Espacio intervenido *</label>
+        <textarea id="intervened" mdInput ngModel name="intervenedSpace" rows="2" cols="60" required></textarea>
+      </md-input-container>
+
+      <md-input-container>
+        <label for="area" class="bold">Area (m2) *</label>
+        <input id="area" mdInput ngModel name="area" type="number" min="0" step="1" required>
+      </md-input-container>
+
+      <md-input-container style="width: 50%;">
+        <label for="startPeriod" class="bold">Inicio del periodo de proyecto *</label>
+        <input mdInput ngModel id="startPeriod" name="startPeriod" [mdDatepicker]="myDatepicker1" required>
+        <button mdSuffix [mdDatepickerToggle]="myDatepicker1"></button>
+      </md-input-container>
+      <md-datepicker #myDatepicker1></md-datepicker>
+
+      <md-input-container style="width: 50%;">
+        <label for="endPeriod" class="bold">Fin del periodo de proyecto *</label>
+        <input mdInput ngModel id="endPeriod" name="endPeriod" [mdDatepicker]="myDatepicker2" required>
+        <button mdSuffix [mdDatepickerToggle]="myDatepicker2"></button>
+      </md-input-container>
+      <md-datepicker #myDatepicker2></md-datepicker>
+
+      <md-input-container style="width: 50%;">
+        <label for="inaugurationDate" class="bold">Fecha de inauguración *</label>
+        <input mdInput ngModel id="inaugurationDate" name="inaugurationDate" [mdDatepicker]="myDatepicker3" required>
+        <button mdSuffix [mdDatepickerToggle]="myDatepicker3"></button>
+      </md-input-container>
+      <md-datepicker #myDatepicker3></md-datepicker>
+
+      <md-input-container>
+        <label for="elements" class="bold">Elementos *</label>
+        <textarea id="elements" mdInput ngModel name="elements" rows="2" cols="60" required></textarea>
+      </md-input-container>
+
+      <md-input-container>
+        <label for="execution" class="bold">Ejecución *</label>
+        <textarea id="execution" mdInput ngModel name="execution" rows="2" cols="60" required></textarea>
+      </md-input-container>
+
+      <md-input-container>
+        <label for="donations" class="bold">Donaciones *</label>
+        <textarea id="donations" mdInput ngModel name="donations" rows="3" cols="60" required></textarea>
+      </md-input-container>
+
+      <md-input-container>
+        <label for="materials" class="bold">Materiales *</label>
+        <textarea id="materials" mdInput ngModel name="materials" rows="3" cols="60" required></textarea>
+      </md-input-container>
+
+      <md-input-container>
+        <label for="photoUrl" class="bold">URL de foto del proyecto</label>
+        <input id="photoUrl" mdInput ngModel name="photoUrl" type="url">
+      </md-input-container>
+
+      <md-input-container>
+        <label for="processDescription" class="bold">Descripción del proceso</label>
+        <textarea id="processDescription" mdInput ngModel name="processDescription" rows="3" cols="60"></textarea>
+      </md-input-container>
+
+    </div>
+
+    <md-dialog-actions>
+      <button md-button type="button" md-dialog-close>Cancelar</button>
+      <span fxFlex></span>
+      <button md-raised-button color="primary">Crear proyecto</button>
+    </md-dialog-actions>
+  </form>
+</div>

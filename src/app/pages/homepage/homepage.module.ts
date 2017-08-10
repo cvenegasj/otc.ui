@@ -8,11 +8,19 @@ import { AgmCoreModule } from '@agm/core';
 import { ProjectModule } from '../../project/project.module';
 
 import { HomepageComponent } from './homepage.component';
-import { ProjectDetailComponent } from '../../project/project-detail.component';
-import { UsModule } from '../../us/us.module';
+import { DateoModule } from '../../dateo/dateo.module';
+import { AddDateoComponent } from '../../add-dateo/add-dateo.component';
+import { AddProjectComponent } from '../../add-project/add-project.component';
+import { UsModule } from '../us/us.module';
+import { StringToNumberPipe } from '../../pipes/string-to-number.pipe';
 
 @NgModule({
-  declarations: [ HomepageComponent ],
+  declarations: [
+    StringToNumberPipe,
+    HomepageComponent,
+    AddDateoComponent,
+    AddProjectComponent
+  ],
   imports: [
     CommonModule,
     MyAppMaterialModule,
@@ -23,12 +31,14 @@ import { UsModule } from '../../us/us.module';
       libraries: ['places'],
       apiKey: 'AIzaSyAzyrmYDcVplIELoYdVUIsM7Idbg74kYXI'
     }),
+
+    DateoModule,
     ProjectModule,
     UsModule,
     RouterModule
   ],
   exports: [ HomepageComponent ],
-  providers: [],
-  entryComponents: []
+  providers: [ ],
+  entryComponents: [ AddDateoComponent, AddProjectComponent ]
 })
 export class HomepageModule { }

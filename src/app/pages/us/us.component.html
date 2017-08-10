@@ -1,32 +1,38 @@
 <article fxFlex dense>
-
-  <header class="uppercase">
-    Nosotros
+  <header fxLayout="row">
+    <div fxLayout="row" style="margin-top: 10px;">
+      <h1 class="font-22 uppercase bolder no-margin">Nosotros</h1>
+    </div>
+    <span fxFlex></span>
+    <button md-icon-button (click)="closePanel();">
+      <i class="material-icons">close</i>
+    </button>
   </header>
 
   <div class="body-container" fxLayout="column" style="padding: 15px;">
 
     <div fxFlex class="font-14">
       <p>
-        <i>Ocupa Tu Calle</i> es una estrategia promovida por el observatorio ciudadano <i>Lima Cómo Vamos</i> y apoyado
-        por la fundación AVINA que busca intervenir la ciudad generando más y mejores espacios públicos que los ciudadanos
+        <i class="bold">Ocupa Tu Calle</i> es una estrategia promovida por el observatorio ciudadano <i class="bold">Lima Cómo Vamos</i> y apoyado
+        por la <i class="bold">Fundación AVINA</i> que busca intervenir la ciudad generando más y mejores espacios públicos que los ciudadanos
         puedan disfrutar.
       </p>
     </div>
 
     <div fxFlex style="margin-top: 10px;">
-      <img src="../../../../assets/img/manhattan-park.jpg" class="responsive-img" />
+      <img src="../../../../assets/img/logoocupatucalledescripcic3b3n1.png" class="responsive-img" />
     </div>
 
     <div fxFlex class="font-14" style="margin-top: 20px;">
       <p>
-        A través de intervenciones urbanas localizadas, <i>Ocupa Tu Calle</i> propicia la recuperación de espacios de la ciudad
-        en desuso, mejora las condiciones de los espacios existentes y genera nuevos lugare públicos. Así, a través de la implementación
-        de parklets, ciclovías pilotos, cicloparqueaderos, cierres temporales de calles y avenidas u otras intervenciones, no sólo se
-        logra una mejor ciudad sino que se propician las relaciones entre ciudadanos y el bienestar de la comunidad.
+        A través de intervenciones urbanas localizadas, <i class="bold">Ocupa Tu Calle</i> propicia la recuperación de espacios de la ciudad en
+        desuso, mejora las condiciones de los espacios existentes y genera nuevos lugares públicos. Así, a través de la implementación de
+        <i>parklets, ciclovias pilotos, cicloparqueaderos, cierres temporales de calles y avenidas</i> u otras intervenciones no sólo se logra una
+        mejor ciudad sino que se propician las relaciones entre ciudadanos y el bienestar de la comunidad.
       </p>
     </div>
 
+    <!--
     <div fxLayout="row" style="margin-top: 20px;">
       <div fxFlex style="padding: 15px;">
         <img src="../../../../assets/img/punto-morado.png" class="responsive-img" />
@@ -43,7 +49,7 @@
       <div fxFlex style="padding: 15px;">
         <img src="../../../../assets/img/punto-naranja.png" class="responsive-img" />
       </div>
-    </div>
+    </div> -->
 
     <div style="margin-top: 35px;">
       <div class="uppercase">El equipo</div>

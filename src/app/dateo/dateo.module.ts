@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MyAppMaterialModule } from '../my-app-material.module';
 
-import { UsComponent } from './us.component';
+import {DateoComponent} from './dateo.component';
 
 @NgModule({
-  declarations: [ UsComponent ],
+  declarations: [ DateoComponent ],
   imports: [
     CommonModule,
     MyAppMaterialModule
   ],
-  exports: [ UsComponent ],
+  exports: [ DateoComponent ],
   providers: [],
   entryComponents: []
 })
-export class UsModule { }
+export class DateoModule { }

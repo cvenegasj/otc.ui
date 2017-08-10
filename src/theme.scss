@@ -2,20 +2,37 @@
 @import 'app-theme';
 @import 'app/navbar/navbar-theme';
 @import 'app/pages/homepage/homepage-theme';
-@import 'app/project/project-detail-theme';
+@import 'app/dateo/dateo-theme';
+@import 'app/project/project-theme';
 
 @include mat-core();
 
-$primary: mat-palette($mat-red, 500);
-$accent:  mat-palette($mat-light-blue, 600, A200, A700);
-$warn:    mat-palette($mat-red, 600);
+$primaryRed: mat-palette($mat-red, 500);
+$accentRed:  mat-palette($mat-light-blue, 600, A200, A700);
+$warnRed:    mat-palette($mat-red, 600);
 $background: mat-palette($mat-light-blue, 600);
 $foreground: mat-palette($mat-grey, 600, 500, 700);
 
-$theme: mat-light-theme($primary, $accent, $warn);
+$redTheme: mat-light-theme($primaryRed, $accentRed, $warnRed);
+$blueTheme: mat-light-theme($accentRed, $primaryRed, $warnRed);
 
-@include angular-material-theme($theme);
-@include app-root-theme($theme);
-@include navbar-theme($theme);
-@include homepage-theme($theme);
-@include project-detail-theme($theme);
+/* Neutral theme */
+$primaryNeutral: mat-palette($mat-brown);
+$accentNeutral:  mat-palette($mat-light-blue);
+$warnNeutral:    mat-palette($mat-red, 600);
+
+$neutralTheme: mat-light-theme($primaryNeutral, $accentNeutral, $warnNeutral);
+
+/* Green theme */
+$primaryGreen: mat-palette($mat-light-green);
+$accentGreen:  mat-palette($mat-light-blue);
+$warnGreen:    mat-palette($mat-red, 600);
+
+$greenTheme: mat-light-theme($primaryGreen, $accentGreen, $warnGreen);
+
+@include angular-material-theme($blueTheme);
+@include app-root-theme($blueTheme);
+@include navbar-theme($redTheme);
+@include homepage-theme($blueTheme);
+@include project-theme($redTheme);
+@include dateo-theme($greenTheme);

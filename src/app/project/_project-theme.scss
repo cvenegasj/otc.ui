@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+@mixin project-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .project-panel header {
+    background-color: mat-color($accent, 400);
+    color: mat-contrast($accent, 400);
+  }
+
+
+}

@@ -1,0 +1,87 @@
+<article fxFlex dense *ngIf="project" class="project-panel">
+
+  <header fxLayout="row">
+    <div fxLayout="column">
+      <h1 class="no-margin">{{ project.name }}</h1>
+      <div fxLayout="row">
+        <i class="material-icons">place</i>
+        <h2 class="font-16 no-margin" style="font-weight: 400;">{{ project.address }}</h2>
+      </div>
+    </div>
+    <span fxFlex></span>
+    <button md-icon-button (click)="closePanel();">
+      <i class="material-icons">close</i>
+    </button>
+  </header>
+
+  <div class="body-container" fxLayout="column" style="padding: 16px;">
+    <div fxFlex>
+      <img src="{{ project.photoUrl }}" class="responsive-img" *ngIf="project.photoUrl" />
+    </div>
+
+    <div fxFlex style="margin-top: 0;">
+      <div class="font-14 italicized">Sugerido por <span class="bold">{{ project.userFirstName + " " + project.userLastName }}</span>
+        el <span>{{ project.creationDateTime }}</span></div>
+    </div>
+
+    <div fxFlex style="margin-top: 10px;">
+      <h3 class="font-16" style="margin-bottom: 0;">Descripción corta</h3>
+      <p style="margin: 0;">{{ project.description }}</p>
+    </div>
+
+    <div fxFlex style="margin-top: 0;">
+      <h3 class="font-16" style="margin-bottom: 0;">Estado</h3>
+      <p style="margin: 0;">
+        <span *ngIf="project.isOccupied">Ocupado</span><span *ngIf="project.isOccupied && project.isToBeOccupied"> · </span>
+        <span *ngIf="project.isToBeOccupied">Por ocupar</span><span *ngIf="project.isToBeOccupied && project.isInConflict"> · </span>
+        <span *ngIf="project.isInConflict">En conflito</span>
+      </p>
+    </div>
+
+    <div fxFlex style="margin-top: 0;">
+      <h3 class="font-16" style="margin-bottom: 0;">Espacio intervenido</h3>
+      <p style="margin: 0;">{{ project.intervenedSpace }}</p>
+    </div>
+
+    <div fxFlex style="margin-top: 0;">
+      <h3 class="font-16" style="margin-bottom: 0;">Área</h3>
+      <p style="margin: 0;">{{ project.area }} m2</p>
+    </div>
+
+    <div fxFlex style="margin-top: 0;">
+      <h3 class="font-16" style="margin-bottom: 0;">Periodo</h3>
+      <p style="margin: 0;">{{ project.startPeriod }} - {{ project.endPeriod }}</p>
+    </div>
+
+    <div fxFlex style="margin-top: 0;">
+      <h3 class="font-16" style="margin-bottom: 0;">Fecha de inauguración</h3>
+      <p style="margin: 0;">{{ project.inaugurationDate }}</p>
+    </div>
+
+    <div fxFlex style="margin-top: 0;">
+      <h3 class="font-16" style="margin-bottom: 0;">Elementos</h3>
+      <p style="margin: 0;">{{ project.elements }}</p>
+    </div>
+
+    <div fxFlex style="margin-top: 0;">
+      <h3 class="font-16" style="margin-bottom: 0;">Ejecución</h3>
+      <p style="margin: 0;">{{ project.execution }}</p>
+    </div>
+
+    <div fxFlex style="margin-top: 0;">
+      <h3 class="font-16" style="margin-bottom: 0;">Donaciones</h3>
+      <p style="margin: 0;">{{ project.donations }}</p>
+    </div>
+
+    <div fxFlex style="margin-top: 0;">
+      <h3 class="font-16" style="margin-bottom: 0;">Materiales</h3>
+      <p style="margin: 0;">{{ project.materials }}</p>
+    </div>
+
+    <div fxFlex style="margin-top: 0; margin-bottom: 25px;">
+      <h3 class="font-16" style="margin-bottom: 0;">Descripción del proceso</h3>
+      <p style="margin: 0;">{{ project.processDescription }}</p>
+    </div>
+  </div>
+
+</article>

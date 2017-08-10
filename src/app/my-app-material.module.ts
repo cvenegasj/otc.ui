@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MdButtonModule, MdSidenavModule, MdCardModule, MdListModule,
-  MdInputModule, MdAutocompleteModule, MdDialogModule } from '@angular/material';
+  MdInputModule, MdAutocompleteModule, MdDialogModule, MdCheckboxModule, MdDatepickerModule, MdNativeDateModule, MdMenuModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -14,7 +14,11 @@ import { MdButtonModule, MdSidenavModule, MdCardModule, MdListModule,
     MdListModule,
     MdInputModule,
     MdAutocompleteModule,
-    MdDialogModule
+    MdDialogModule,
+    MdCheckboxModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
+    MdMenuModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -25,7 +29,11 @@ import { MdButtonModule, MdSidenavModule, MdCardModule, MdListModule,
     MdListModule,
     MdInputModule,
     MdAutocompleteModule,
-    MdDialogModule
+    MdDialogModule,
+    MdCheckboxModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
+    MdMenuModule
   ],
 })
 export class MyAppMaterialModule { }

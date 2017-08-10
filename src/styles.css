@@ -42,6 +42,18 @@ app-navbar {
   font-weight: 500;
 }
 
+.bolder {
+  font-weight: 600;
+}
+
+.italicized {
+  font-style: italic;
+}
+
+.no-margin {
+  margin: 0;
+}
+
 .icon-12 {
   font-size: 12px;
   width: 12px;
@@ -50,18 +62,61 @@ app-navbar {
 .font-12 {
   font-size: 12px !important;
   line-height: 16px !important;
-  font-weight: 300 !important;
 }
 
 .font-13 {
   font-size: 13px !important;
   line-height: 17px !important;
-  font-weight: 300 !important;
 }
 
 .font-14 {
   font-size: 14px !important;
   line-height: 18px !important;
-  font-weight: 300 !important;
+}
+
+.font-15 {
+  font-size: 15px !important;
+  line-height: 19px !important;
+}
+
+.font-16 {
+  font-size: 16px !important;
+  line-height: 20px !important;
+}
+
+.font-17 {
+  font-size: 17px !important;
+  line-height: 21px !important;
+}
+
+.font-18 {
+  font-size: 18px !important;
+  line-height: 22px !important;
+}
+
+.font-19 {
+   font-size: 19px !important;
+   line-height: 23px !important;
+ }
+
+.font-20 {
+  font-size: 20px !important;
+  line-height: 24px !important;
+}
+
+.font-21 {
+  font-size: 21px !important;
+  line-height: 25px !important;
+}
+
+.font-22 {
+  font-size: 22px !important;
+  line-height: 26px !important;
+}
+
+[fxLayout=row] > md-divider {
+  border-top: 0;
+  border-left: 1px solid;
+  border-left-color: rgba(0, 0, 0, 0.12);
 }
 

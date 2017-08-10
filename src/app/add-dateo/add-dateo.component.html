@@ -1,0 +1,28 @@
+<div style="max-width: 400px;">
+  <h1 md-dialog-title class="primary-color">¡Ocupa aquí!</h1>
+
+  <div class="centered font-16" style="margin-bottom: 30px;">
+    <!--Hola <span class="bold">Aarón</span>, <br /> -->
+    Cuando ocupas le muestras a la comunidad OTC una oportunidad para mejorar nuestra ciudad.
+  </div>
+
+  <form #form="ngForm" (ngSubmit)="dialogRef.close(form.value)" ngNativeValidate class="font-13">
+    <div fxLayout="column" fxLayoutGap="5px">
+      <md-input-container>
+        <label for="address" class="bold">Dirección de tu dato:</label>
+        <input id="address" mdInput ngModel name="address" required>
+      </md-input-container>
+
+      <md-input-container>
+        <label for="description" class="bold">Explica la situación de este lugar:</label>
+        <textarea id="description" mdInput ngModel name="description" rows="4" cols="60" required></textarea>
+      </md-input-container>
+    </div>
+
+    <md-dialog-actions>
+      <button md-button type="button" md-dialog-close>Cancelar</button>
+      <span fxFlex></span>
+      <button md-raised-button color="primary">Ocupar</button>
+    </md-dialog-actions>
+  </form>
+</div>

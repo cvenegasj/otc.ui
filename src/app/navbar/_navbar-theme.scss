@@ -7,11 +7,11 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  app-navbar {
-    color: mat-color($primary, default-contrast);
 
+  app-navbar {
     .otc-navbar {
-      background: mat-color($primary);
+      background: mat-color($primary, 600);
+      color: mat-contrast($primary, 600);
     }
   }
 }

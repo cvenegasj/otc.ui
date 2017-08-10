@@ -1,0 +1,32 @@
+<div style="width: 320px;">
+  <h1 md-dialog-title>Regístrate</h1>
+
+  <form #form="ngForm" (ngSubmit)="signUp(form.value)" ngNativeValidate class="font-14">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <md-input-container>
+        <input type="text" mdInput ngModel name="firstName" placeholder="Nombres" required/>
+      </md-input-container>
+
+      <md-input-container>
+        <input type="text" mdInput ngModel name="lastName" placeholder="Apellidos" required/>
+      </md-input-container>
+
+      <md-input-container>
+        <input type="email" mdInput ngModel name="email" placeholder="Email" required/>
+      </md-input-container>
+
+      <md-input-container>
+        <input type="password" mdInput ngModel name="password" placeholder="Contraseña" required/>
+      </md-input-container>
+
+      <md-input-container>
+        <input type="text" mdInput ngModel name="organization" placeholder="Nombre de organización" required/>
+      </md-input-container>
+    </div>
+
+    <md-dialog-actions fxLayout="column">
+      <div *ngIf="error" class="warn-color-700">{{ error }}</div>
+      <button [disabled]="loading" class="uppercase" md-raised-button color="primary">Registrarse</button>
+    </md-dialog-actions>
+  </form>
+</div>

@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MyAppMaterialModule } from '../my-app-material.module';
 
-import { ProjectDetailComponent } from './project-detail.component';
+import { ProjectComponent } from './project.component';
 
 @NgModule({
-  declarations: [ ProjectDetailComponent ],
+  declarations: [ ProjectComponent ],
   imports: [
     CommonModule,
     MyAppMaterialModule
   ],
-  exports: [ ProjectDetailComponent ],
+  exports: [ ProjectComponent ],
   providers: [],
   entryComponents: []
 })

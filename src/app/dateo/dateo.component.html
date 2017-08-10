@@ -1,0 +1,26 @@
+<article fxFlex dense *ngIf="dateo" class="dateo-panel">
+  <header fxLayout="row">
+    <div fxLayout="row">
+      <i class="material-icons">place</i>
+      <h1 class="font-22 no-margin">{{ dateo.address }}</h1>
+    </div>
+    <span fxFlex></span>
+    <button md-icon-button (click)="closePanel();">
+      <i class="material-icons">close</i>
+    </button>
+  </header>
+
+  <div class="body-container" fxLayout="column" style="padding: 16px;">
+    <!--<div fxFlex>
+      <img src="../../../../assets/img/manhattan-park.jpg" class="responsive-img" />
+    </div> -->
+    <div fxFlex style="margin-top: 10px;">
+      <div class="font-14 italicized">Sugerido por <span class="bold">{{ dateo.userFirstName + " " + dateo.userLastName }}</span>
+      el <span>{{ dateo.creationDateTime }}</span></div>
+    </div>
+    <div fxFlex style="margin-top: 10px;">
+      <h3 class="font-16">Descripción</h3>
+      <p>{{ dateo.description }}</p>
+    </div>
+  </div>
+</article>

@@ -1,103 +1,82 @@
 <md-sidenav-container fxFlex>
   <md-sidenav #leftSidenav id="leftSidenav" mode="side" fxLayout="column" [class.mat-elevation-z6]="true">
-    <md-input-container style="padding: 60px 10px 30px;" floatPlaceholder="always">
-      <md-placeholder>
-        Busca una dirección
-      </md-placeholder>
-      <input #mapsSearch id="mapsSearch" fxFlex mdInput type="search" [formControl]="mapsSearchControl" value="Calle Chinchón 555">
-      <!--<input #mapsSearch fxFlex mdInput type="search" [formControl]="mapsSearchControl" [mdAutocomplete]="auto" value="Calle Chinchón 555">
-      <md-autocomplete #auto="mdAutocomplete">
-        <md-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{ option }}
-        </md-option>
-      </md-autocomplete> -->
-    </md-input-container>
+    <div style="margin: 15px 10px 30px;" fxLayout="column">
+      <h2 class="font-16 bold uppercase">Datea y crea proyectos</h2>
+      <md-input-container fxFlex>
+        <md-placeholder>
+          Busca una dirección
+        </md-placeholder>
+        <input #mapsSearch id="mapsSearch" fxFlex mdInput type="search" [formControl]="mapsSearchControl">
+        <!--<input #mapsSearch fxFlex mdInput type="search" [formControl]="mapsSearchControl" [mdAutocomplete]="auto" value="Calle Chinchón 555">
+        <md-autocomplete #auto="mdAutocomplete">
+          <md-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{ option }}
+          </md-option>
+        </md-autocomplete> -->
+      </md-input-container>
+    </div>
 
     <md-divider></md-divider>
 
-    <md-nav-list dense class="uppercase">
-      <h3 md-subheader>Oportunidades</h3>
+    <md-nav-list dense style="padding-left: 10px; padding-right: 10px;">
+      <!-- <h2 class="font-16 bold uppercase">Oportunidades</h2>
       <a md-list-item href="">Convocatoria de voluntarios</a>
       <a md-list-item href="">Donación de materiales</a>
-
-      <md-divider></md-divider>
-
-      <h3 md-subheader>Vista de proyectos</h3>
-      <md-list-item>
-        <a md-line href="..."><img src="../../../../assets/img/punto-verde.png" class="bullet-category" /> Ocupados</a>
-        <button md-icon-button (click)="showInfo(link)">
-          <md-icon class="material-icons">remove_red_eye</md-icon>
-        </button>
+      <md-divider></md-divider> -->
+      <h3 class="font-16 bold uppercase">Vista de proyectos</h3>
+      <md-list-item (click)="showAll()">
+        <a md-line class="font-14" style="margin-left: 5px;">Todos</a>
       </md-list-item>
-      <md-list-item>
-        <a md-line href="..."><img src="../../../../assets/img/punto-naranja.png" class="bullet-category" /> Por ocupar</a>
-        <button md-icon-button (click)="showInfo(link)">
-          <md-icon class="material-icons">remove_red_eye</md-icon>
-        </button>
+      <md-list-item (click)="showOccupied()">
+        <a md-line class="font-14" style="margin-left: 5px;">Ocupados</a>
+        <md-icon class="material-icons">{{ watchOcuppied ? 'remove_red_eye' : ''  }}</md-icon>
       </md-list-item>
-      <md-list-item>
-        <a md-line href="..."><img src="../../../../assets/img/punto-morado.png" class="bullet-category" /> En conflicto</a>
-        <button md-icon-button (click)="showInfo(link)">
-          <md-icon class="material-icons">remove_red_eye</md-icon>
-        </button>
+      <md-list-item (click)="showToBeOccupied()">
+        <a md-line class="font-14" style="margin-left: 5px;">Por ocupar</a>
+        <md-icon class="material-icons">{{ watchToBeOccupied ? 'remove_red_eye' : '' }}</md-icon>
       </md-list-item>
-
+      <md-list-item (click)="showInConflict()">
+        <a md-line class="font-14" style="margin-left: 5px;"> En conflicto</a>
+        <md-icon class="material-icons">{{ watchInConflict ? 'remove_red_eye' : '' }}</md-icon>
+      </md-list-item>
     </md-nav-list>
   </md-sidenav>
 
   <div class="content" fxLayout='row' fxLayout.lt-sm="column">
+
     <agm-map fxFlex fxFlex.lt-sm="100" [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapReady)="loadMapAPIs($event)">
 
-      <agm-marker  *ngFor="let m of markers; let i = index"
-                   (markerClick)="clickedMarker(m)"
-                   [latitude]="m.lat"
-                   [longitude]="m.lng"
-                   iconUrl="{{ '../../../../assets/img/' + m.iconUrl }}">
-        <!--<agm-info-window>
-          <md-card dense fxFlex class="card-general-info-window" style="height: 340px !important;">
-            <md-card-title>
-              Parque Manhattan
-            </md-card-title>
-            <md-card-subtitle>
-              Estrategia promovida por el observatorio ciudadano Lima Cómo Vamos
-            </md-card-subtitle>
-            <img md-card-image src="../../../../assets/img/manhattan-park.jpg" />
-            <md-card-content>
-              <div><span class="bold">Puntuación: </span>
-                <span>
-                  <i class="material-icons icon-12">star_rate</i>
-                  <i class="material-icons icon-12">star_rate</i>
-                  <i class="material-icons icon-12">star_rate</i>
-                  <i class="material-icons icon-12">star_rate</i>
-                  <i class="material-icons icon-12">star_rate</i></span></div>
-              <div><span class="bold">Estado: </span><span>En proceso - faltan 5 días</span></div>
-              <div><span class="bold">Creado por: </span><span>Colectivo Perú</span></div>
-              <div><span class="bold">Duración del proyecto: </span><span>2 meses aprox.</span></div>
-            </md-card-content>
-            <md-card-actions align="center">
-              <button md-button (click)="openProjectDetailDialog(21)">VER MÁS</button>
-            </md-card-actions>
-          </md-card>
-        </agm-info-window> -->
+      <agm-marker  *ngFor="let item of dateos"
+                   (markerClick)="clickedDateoMarker(item)"
+                   [latitude]="item.latitude | toNumber"
+                   [longitude]="item.longitude | toNumber"
+                   iconUrl="../../../../assets/img/dateo-icon.svg">
       </agm-marker>
 
-      <agm-marker *ngIf="markerDatea" [latitude]="markerDatea.lat" [longitude]="markerDatea.lng" [markerDraggable]="true" iconUrl="../../../../assets/img/user-position-marker.svg">
-        <agm-info-window>
-          <md-card dense fxFlex class="card-general-info-window">
-            <md-card-title>
-              Parque Manhattan
-            </md-card-title>
-            <md-card-content fxLayout="row">
-              <div fxFlex fxLayout="column" fxLayoutAlign="center center" style="padding: 5px;">
-                <p class="centered">Si quieres pasar la voz de algún lugar que se podría intervenir</p>
-                <button md-button md-raised-button color="primary" class="mat-elevation-z1">Datea</button>
+      <agm-marker  *ngFor="let item of projects"
+                   (markerClick)="clickedProjectMarker(item)"
+                   [latitude]="item.latitude | toNumber"
+                   [longitude]="item.longitude | toNumber"
+                   iconUrl="../../../../assets/img/punto-ocupado.svg">
+      </agm-marker>
+
+      <agm-marker *ngIf="markerUser" [latitude]="markerUser.lat" [longitude]="markerUser.lng" [markerDraggable]="true" (dragEnd)="markerUserDragEnd($event)" iconUrl="../../../../assets/img/user-position-marker.svg">
+        <agm-info-window #userInfoWindow [isOpen]="true">
+          <div class="card-general-info-window">
+            <div fxLayout="row">
+              <div fxFlex fxLayout="column" fxLayoutAlign="start center" style="padding: 5px;">
+                <p class="centered font-14">Si quieres pasar la voz de algún lugar que se podría intervenir</p>
+                <span fxFlex></span>
+                <button md-button md-raised-button color="primary" (click)="openAddOcupaDialog()">Ocupa</button>
               </div>
-              <div fxFlex fxLayout="column" fxLayoutAlign="center center" style="padding: 5px;">
-                <p class="centered">Si quieres empezar un proyecto aquí</p>
-                <button md-button md-raised-button color="primary" class="mat-elevation-z9">Crea un proyecto</button>
+              <md-divider></md-divider>
+              <div fxFlex fxLayout="column" fxLayoutAlign="start center" style="padding: 5px;">
+                <p class="centered font-14">Si quieres empezar un proyecto aquí</p>
+                <span fxFlex></span>
+                <button md-button md-raised-button color="primary" (click)="openAddProjectDialog()">Crea un proyecto</button>
               </div>
-            </md-card-content>
-          </md-card>
+            </div>
+          </div>
         </agm-info-window>
       </agm-marker>
 
@@ -105,13 +84,13 @@
       <!-- <agm-marker *ngIf="markerCurrentPosition" [latitude]="markerCurrentPosition.lat" [longitude]="markerCurrentPosition.lng" iconUrl="../../../../assets/img/user-position-marker.svg"></agm-marker> -->
     </agm-map>
 
-    <div fxFlex="35" fxFlex.lt-sm="100" *ngIf="selectedProject" class="mat-elevation-z5" style="z-index: 999; overflow-y: auto; max-height: 100%;">
+    <div fxFlex="30" fxFlex.lt-sm="100" [hidden]="!isInfoPanelVisible" class="mat-elevation-z5" style="z-index: 999; overflow-y: auto; max-height: 100%;">
       <router-outlet></router-outlet>
     </div>
 
   </div>
 
-
+  <!--
   <md-sidenav #rightSidenav id="rightSidenav" align="end" mode="side" opened fxHide.lt-md="true">
     <md-nav-list dense>
       <md-list-item [disableRipple]="true">
@@ -150,5 +129,5 @@
         </p>
       </md-list-item>
     </md-nav-list>
-  </md-sidenav>
+  </md-sidenav> -->
 </md-sidenav-container>
